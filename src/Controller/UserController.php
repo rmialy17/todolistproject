@@ -38,7 +38,7 @@ class UserController extends AbstractController
             $user->setPassword(
                 $passwordHasher->hashPassword(
                     $user,
-                    $form->get('security.password_encoder')->getData()
+                    $form->get('password')->getData()
                 )
             );
 
@@ -67,7 +67,7 @@ class UserController extends AbstractController
             $user->setPassword(
                 $passwordHasher->hashPassword(
                     $user,
-                    $form->get('security.password_encoder')->getData()
+                    $form->getData()
                 )
             );
 
