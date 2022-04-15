@@ -1,17 +1,43 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Log in!{% endblock %}
+
 {% block body %}
-    {% if error %}
-        <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" name="_username" value="{{ lastUserName }}" />
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="_password" />
+        <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
+        {# <form action="{{ path('app_login') }}" method="post">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" name="_username" value="{{ last_username}}" />
+    
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="_password" />
+    
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+            <button class="btn btn-success" type="submit">Se connecter</button>
+         </form> #}
 
-        <button class="btn btn-success" type="submit">Se connecter</button>
-    </form>
+         <form action="{{path('app_login')}}" method="post">
+            <div class="form-group">
+                <label>Login : </label>
+                <div><input type="text" style="color:black;text-align:center;" name="_username" value="{{last_username}}"></div>
+            </div>
+            <div class="form-group">
+                <label>Password : </label>
+                <div><input type="password" style="color:black;" required name="_password"></div>
+            </div>
+            <input type="submit" class="btn btn-primary" value="s'identifier">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        </form>
 {% endblock %}
