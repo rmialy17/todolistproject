@@ -22,6 +22,7 @@ class AppFixtures extends Fixture
         //Tasks(5)
         
         $today = new \DateTime();
+        $user= new User();
 
         $data = [
             "title" => ['Tâche 1', 'Tâche 2', 'Tâche 3', 'Tâche 4', 'Tâche 5'],
@@ -36,8 +37,12 @@ class AppFixtures extends Fixture
             $task->setTitle($data["title"][$i]);
             $task->setContent($data["content"][$i]);
             $task->toggle($data["isDone"][$i]);
-           
+            $task->setUser(null);
+            if($user == null){
+                $user->setUsername('anonymous');
+            }
             $manager->persist($task);
+          
         }
 
         $manager->flush();

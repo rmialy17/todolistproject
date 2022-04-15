@@ -3,13 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Entity\User;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class TaskController extends AbstractController
 {
@@ -24,8 +29,9 @@ class TaskController extends AbstractController
 
     /**
      * @Route("/tasks/create", name="task_create")
+     * 
      */
-    public function createAction(Request $request, EntityManagerInterface $em):Response
+    public function createAction(UserInterface $user, Request $request, EntityManagerInterface $em):Response
     {
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
@@ -34,6 +40,8 @@ class TaskController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $user=$this->getUser();
+            $task->setUser($user);
             $em->persist($task);
             $em->flush();
 

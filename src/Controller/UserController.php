@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,7 @@ class UserController extends AbstractController
     public function createAction(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em): Response
     {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user);
 
         $form->handleRequest($request);
 
@@ -41,7 +42,11 @@ class UserController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-
+            if($form->get('role')->getData() == 'ROLE_USER'){
+            $user->setRoles(["ROLE_USER"]);
+            }else{
+            $user->setRoles(["ROLE_ADMIN"]);   
+            }
             $em->persist($user);
             $em->flush();
 
@@ -50,7 +55,12 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_list');
         }
 
-        return $this->render('user/create.html.twig', ['form' => $form->createView()]);
+        return $this->render(
+            'user/create.html.twig',
+            [
+                'registrationForm' => $form->createView(),
+            ]
+        );
     }
 
     /**
