@@ -2,6 +2,8 @@ language: php
 dist: bionic
 php:
   - '7.4.9'
+services:
+  - mysql  
 script:
-   - composer install
-   - vendor/bin/phpunit
+  - composer install
+  - php bin/phpunit
