@@ -68,7 +68,7 @@ class UserController extends AbstractController
      */
     public function editAction(User $user, Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $em): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user);
 
         $form->handleRequest($request);
 
@@ -77,10 +77,9 @@ class UserController extends AbstractController
             $user->setPassword(
                 $passwordHasher->hashPassword(
                     $user,
-                    $form->getData()
+                    $form->get('password')->getData()
                 )
             );
-
             $em->persist($user);
             $em->flush();
 
