@@ -1,6 +1,12 @@
 language: php
 php:
-  -'7.4.9'
+  - nightly
+ 
+dist:
+  - trusty
+
+install: skip
+script: php --version
 script:
    - composer install
    - vendor/bin/simple-phpunit
