@@ -18,4 +18,4 @@ install:
 language: generic
 script:
    - composer install
-   - vendor/bin/simple-phpunit
+   - vendor/bin/phpunit
