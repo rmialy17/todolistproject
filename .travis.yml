@@ -1,12 +1,21 @@
-language: php
-php:
-  - nightly
- 
-dist:
-  - trusty
-
-install: skip
-script: php --version
+addons:
+  apt:
+    packages: null
+    sources:
+      - sourceline: 'ppa:ondrej/php'
+    update: true
+before_install:
+  - sudo apt update
+  - sudo apt-get -y install libxml2-dev
+  - >-
+    sudo apt install -y lsb-release ca-certificates apt-transport-https
+    software-properties-common gnupg2
+  - 'wget -qO - https://packages.sury.org/php/apt.gpg | sudo apt-key add -'
+dist: focal
+install:
+  - sudo apt install php8.1
+  - sudo update-alternatives --set php /usr/bin/php8.1 
+language: generic
 script:
    - composer install
    - vendor/bin/simple-phpunit
