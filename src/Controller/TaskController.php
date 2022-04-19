@@ -97,11 +97,18 @@ class TaskController extends AbstractController
      */
     public function deleteTaskAction(Task $task, EntityManagerInterface $em): Response
     {
-        $em->remove($task);
-        $em->flush();
+        if ($this->isGranted('delete', $task)) {
 
-        $this->addFlash('success', 'La tâche a bien été supprimée.');
+            $em->remove($task);
+            $em->flush();
+            $this->addFlash('success', 'La tâche a bien été supprimée.');
+
+            return $this->redirectToRoute('task_list');
+        }
+
+        $this->addFlash('error', 'Vous n êtes pas autorisé à supprimer.' );
 
         return $this->redirectToRoute('task_list');
+    
     }
 }
