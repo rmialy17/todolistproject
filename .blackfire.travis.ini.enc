@@ -1,0 +1,9 @@
+; .blackfire.travis.ini
+[blackfire]
+
+server-id=c977c236-1e10-4a99-8f8f-f5cc4dbf0303
+server-token=a43279c4164bb4a573ee60da2de54d2811b4b6f3893563b9c50c03692d723d08
+client-id=8a0337b4-f773-4bc8-84d8-87132b1113bf
+client-token=994f9bb1f0cca7ffa1cb66ffb62477524dd2823ab740bc33e9ae7571bc16aba1
+endpoint=https://blackfire.io/
+collector=https://blackfire.io/
