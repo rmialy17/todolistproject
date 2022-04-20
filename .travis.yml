@@ -21,9 +21,10 @@ before_install:
         fi
 
 install:
-    - travis_retry composer install
+    - travis_retry composer install --no-interaction
 
 before_script:
+    - composer self-update
     - phpenv config-rm xdebug.ini || true
     - |
         if [[ "$BLACKFIRE" = "on" ]]; then
