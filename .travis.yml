@@ -1,9 +1,10 @@
 language: php
-dist: bionic
 php:
   - '7.4.9'
 services:
-  - mysql  
+  - mysql 
+before_script:
+  - composer self-update
 script:
   - composer install
-  - php bin/phpunit
+  - php bin/simple-phpunit
