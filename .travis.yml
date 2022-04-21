@@ -38,4 +38,4 @@ before_script:
     #     fi
 
 script:
-    - php bin/phpunit
+    - vendor/bin/phpunit
