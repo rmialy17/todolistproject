@@ -1,88 +1,86 @@
+-- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
+--
+-- Host: localhost    Database: todolistproject
+-- ------------------------------------------------------
+-- Server version	8.0.21
 
--- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
--- START TRANSACTION;
--- SET time_zone = "+00:00";
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Table structure for table `user`
+--
 
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `roles` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D649F85E0677` (`username`),
+  UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (11,'admin','$2y$13$yUvm9Ag3rU0rgEhADcvEoeNDE4AYckuw/TrhbiJR/Zz1N/XXbGove','admin@gmail.com','[\"ROLE_ADMIN\"]'),(12,'userdemo','$2y$13$sUunJEE/F2SqoFr5RD1ihuANAD2IHtGi/uN8nFJm0NWb58jhiEfvK','userdemo@gmail.com','[\"ROLE_USER\"]'),(13,'mialy','dedenou','moi@gmail.com','[\"ROLE_ADMIN\"]'),(14,'mi','$2y$13$M221NMCunDp9qgQjQ8atYev9k1S2gbH4lj1apoDDURQPqzq3xpXmm','mi@gmail.com','[]'),(15,'mamo','$2y$13$rnk.MCFEtazDnG4EOQ2j6O3T9WB/vwvjwglMLZgCQw9UqbhPNKhwC','mamo@gmail.com','[\"ROLE_USER\"]'),(16,'OOOOO','$2y$13$MM4wSExHyLkZS.8CamEWgulZ2xPp1dnMp6o.inqs4NtlSGChWGd7.','OOOO@oooo.com','[\"ROLE_ADMIN\"]'),(17,'eeee','$2y$13$dZVA3.2q3Yi1Jm5o1JwsKOXmXhptf1FWJccpNa4Ypk67kBVGcwI4K','eeeeee@gmail.com','[\"ROLE_ADMIN\"]'),(18,'fffffffff','$2y$13$v49RCH7NnFtHQTaA3MrZr.bfQigehvLVzWsu41cxXMdMYsdS2sevO','ffffff@gsvz.com','[\"ROLE_ADMIN\"]'),(19,'iiiiiiiiii','$2y$13$Jc1wc9ukEt2C7SO3Z4aLCuSlMv0Kw2WG1bSE/jiVojhTL3jmmk3Ae','iiiiiiiiii@gujkgbj.com','[]'),(20,'dddddd','$2y$13$mCnRmf6kd5XD064Saz6wGeD8LluLkrFweG8fwode5RL8wkYkCq7Q2','dddddd@ddddddd.ddd','[]'),(21,'uuuuuuuu','$2y$13$3YUJATj6PqKisP7G0bn67uoxxdmtSt98P7S.OMso3wVOr.zLMqnW6','uuuuuuuu@u.uuu','[\"ROLE_USER\"]'),(22,'tttttttttt','$2y$13$MUsy31dVocbPcPwJxaF2BOjPlYobhjgCc/z/HKIdkSvnhV61u7lOW','ttttttttttt@tttttttttt.tttttttt','[\"ROLE_ADMIN\"]'),(23,'zzzzzzzzzzz','$2y$13$PY/sL9AH2l73j2kS4VOqW.AwYHmWojUxPwKXQW3bWsnpTSo7b9vay','zzzzzz@zzzzz.zzzzz','[\"ROLE_USER\"]'),(24,'zzzzzzzz','$2y$13$v3TdZ0B3fPT.qkEHGaFpGOsuBwAas5eA/t.uKVITjvi1dEOLeEGfe','zzz@zzzzz.zzzzz','[\"ROLE_ADMIN\"]'),(25,'zzzzz','$2y$13$uWJjFzNWrwmU3wKlHmMjhOqeTded8AUTkGAbUsWECSEyaEvrEbJ1C','zz@zzzzz.zzzzz','[\"ROLE_USER\"]'),(26,'nfnnn222','$2y$13$XSu2rJkmy7soPUpCU6l7D.HQV584dR5hLvDN7Q.MJGMOHQ3xozQKu','bgbgdnb@hhhh.hhhh','[\"ROLE_USER\"]');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task`
+--
 
 DROP TABLE IF EXISTS `task`;
-CREATE TABLE IF NOT EXISTS `task` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `task` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_done` tinyint(1) NOT NULL,
+  `user_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `IDX_527EDB25A76ED395` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `user_id` (`user_id`) USING BTREE,
+  CONSTRAINT `task_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `task`
+--
 
-INSERT INTO `task` (`id`, `user_id`, `created_at`, `title`, `content`, `is_done`) VALUES
-(4, NULL, '2022-04-16 17:09:00', 'Tâche 4', 'Faire un gâteau', 0),
-(6, 2, '2022-04-17 04:11:52', 'Le titre', 'le contenu', 1),
-(7, 2, '2022-04-17 04:15:35', 'Le titre', 'le contenu', 0),
-(8, 2, '2022-04-17 04:18:35', 'Le titre', 'le contenu', 0),
-(9, 2, '2022-04-17 04:58:48', 'Le titre', 'le contenu', 1),
-(10, 2, '2022-04-17 05:05:02', 'Le titre', 'le contenu', 0),
-(11, 2, '2022-04-17 05:12:10', 'Le titre', 'le contenu', 0),
-(12, 2, '2022-04-17 05:13:19', 'Le titre', 'le contenu', 0),
-(13, 2, '2022-04-17 05:18:57', 'Le titre', 'le contenu', 0),
-(14, 2, '2022-04-17 05:22:35', 'Le titre', 'le contenu', 0),
-(15, 2, '2022-04-17 05:29:56', 'Le titre', 'le contenu', 0),
-(16, 2, '2022-04-17 05:30:37', 'Le titre', 'le contenu', 0),
-(17, 2, '2022-04-17 11:45:11', 'Le titre', 'le contenu', 0),
-(18, 2, '2022-04-17 12:32:51', 'Le titre', 'le contenu', 0),
-(19, 2, '2022-04-17 12:36:34', 'Le titre', 'le contenu', 0),
-(20, 2, '2022-04-17 13:12:28', 'Le titre', 'le contenu', 0),
-(21, 2, '2022-04-17 13:57:31', 'Le titre', 'le contenu', 0),
-(22, 2, '2022-04-17 15:45:33', 'Le titre', 'le contenu', 0),
-(23, 2, '2022-04-17 15:48:23', 'Le titre', 'le contenu', 0),
-(24, 2, '2022-04-17 15:54:42', 'Le titre', 'le contenu', 0),
-(25, 2, '2022-04-17 18:11:57', 'Le titre', 'le contenu', 0),
-(26, 2, '2022-04-17 18:37:28', 'Le titre', 'le contenu', 0),
-(27, 2, '2022-04-17 18:39:53', 'Le titre', 'le contenu', 0),
-(28, 2, '2022-04-17 18:42:06', 'Le titre', 'le contenu', 0),
-(29, 2, '2022-04-17 18:43:56', 'Le titre', 'le contenu', 0),
-(30, 2, '2022-04-17 18:45:56', 'Le titre', 'le contenu', 0),
-(31, 2, '2022-04-17 18:54:30', 'Le titre', 'le contenu', 0),
-(32, 2, '2022-04-17 18:59:16', 'Le titre', 'le contenu', 0),
-(33, 2, '2022-04-17 19:00:58', 'Le titre', 'le contenu', 0),
-(34, 2, '2022-04-17 19:02:15', 'Le titre', 'le contenu', 0),
-(35, 2, '2022-04-17 19:02:57', 'Le titre', 'le contenu', 0),
-(36, 2, '2022-04-17 19:12:39', 'Le titre', 'le contenu', 0),
-(37, 2, '2022-04-17 19:16:46', 'Le titre', 'le contenu', 0),
-(38, 2, '2022-04-17 19:20:05', 'Le titre', 'le contenu', 0),
-(39, 2, '2022-04-19 11:46:07', 'Le titre', 'le contenu', 0),
-(40, 2, '2022-04-19 11:49:09', 'Le titre', 'le contenu', 0),
-(41, 2, '2022-04-19 11:52:16', 'Le titre', 'le contenu', 0),
-(42, 2, '2022-04-19 11:54:09', 'Le titre', 'le contenu', 0),
-(43, 2, '2022-04-19 12:13:02', 'Le titre', 'le contenu', 0),
-(44, 2, '2022-04-19 12:16:11', 'Le titre', 'le contenu', 0),
-(45, 2, '2022-04-19 12:19:18', 'Le titre', 'le contenu', 0);
+LOCK TABLES `task` WRITE;
+/*!40000 ALTER TABLE `task` DISABLE KEYS */;
+INSERT INTO `task` VALUES (35,'2022-04-15 12:41:07','Tâche 1','Faire le ménage',1,NULL),(36,'2022-04-15 12:41:07','Tâche 2','Faire les courses',0,NULL),(37,'2022-04-15 12:41:07','Tâche 3','Sortir les poubelles',1,NULL),(38,'2022-04-15 12:41:07','Tâche 4','Faire un gâteau',0,NULL),(39,'2022-04-15 12:41:07','Tâche 5','Acheter une table',1,NULL),(44,'2022-04-19 10:03:57','dklejk','frzfzrfzrfzr',0,12);
+/*!40000 ALTER TABLE `task` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `roles` json NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_8D93D649F85E0677` (`username`),
-  UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `roles`) VALUES
-(1, 'admin', '$2y$13$9zAg8xov1yZT4HMqG6..puXMEaZk84DL6LY3dK3gov4V2.tP2kjWS', 'admin@gmail.com', '[\"ROLE_ADMIN\"]'),
-(2, 'userdemo', '$2y$13$wvROV/OmiiKa4y1eD3uzqeqAwO9MqUtxwJawgkTGVMiCxFMpg4qvG', 'userdemo@gmail.com', '[\"ROLE_USER\"]'),
-(3, 'newadmin', '$2y$13$1ZGyAkPglZU2FkRs4Y4m4.bYULyrUCL5393uqJVesp5KvP0.ThUla', 'newadmin@gmail.com', '[\"ROLE_ADMIN\"]');
-
-
-ALTER TABLE `task`
-  ADD CONSTRAINT `FK_527EDB25A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-COMMIT;
-
+-- Dump completed on 2022-04-21 12:59:10
