@@ -24,14 +24,14 @@ cache:
 # install:
 #     - travis_retry composer install
 before_install:
-    - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
-    - mysql tests/travis.sql
+    - mysql -u root -e 'CREATE DATABASE todolistproject_test;' < tests/travis.sql
+    # - mysql -u root < tests/travis.sql
 #   - mysql -e 'CREATE DATABASE symfony;
     # - mysql -e 'CREATE DATABASE IF NOT EXISTS test;
 
 before_script:
     #- composer self-update
-    # - composer install
+    - composer install
     # - KERNEL_CLASS='App\Kernel'
     # - APP_SECRET='$ecretf0rt3st'
     # - SYMFONY_DEPRECATIONS_HELPER=999999
