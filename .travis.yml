@@ -19,7 +19,7 @@ cache:
     - $HOME/.composer/cache/files
 
 before_install:
-    - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
+    - mysql -u root -e 'CREATE DATABASE todolistproject;'
     - composer require symfony/runtime
     - php ./bin/console doctrine:migrations:diff
     - php ./bin/console doctrine:migrations:migrate --no-interaction
