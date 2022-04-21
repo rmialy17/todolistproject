@@ -23,9 +23,9 @@ cache:
 
 # install:
 #     - travis_retry composer install
-before_install:
-  - mysql -e 'CREATE DATABASE symfony;
-  
+# before_install:
+#   - mysql -e 'CREATE DATABASE symfony;
+
 before_script:
     #- composer self-update
     - composer install
