@@ -26,6 +26,7 @@ cache:
 before_install:
     # - mysql -u root -e 'CREATE DATABASE todolistproject_test;' < travis.sql
     - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
+    # - mysql travis.sql
     # - mysql -u root < tests/travis.sql
 #   - mysql -e 'CREATE DATABASE symfony;
     # - mysql -e 'CREATE DATABASE IF NOT EXISTS test;
@@ -52,5 +53,5 @@ env:
     #     fi
 
 script:
-    - travis.sql
+    - tests/travis.sql
     - vendor/bin/phpunit
