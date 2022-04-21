@@ -5,6 +5,9 @@ matrix:
         - php: 7.4
         #   env: BLACKFIRE=on
 
+services:
+  - mysql         
+
 sudo: false
 
 cache:
