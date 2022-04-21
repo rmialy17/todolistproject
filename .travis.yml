@@ -9,7 +9,7 @@ services:
 
 test:
   adapter: mysql2
-  database: todolisproject
+  database: todolisproject_test
   username: travis
   encoding: utf8      
 
@@ -19,7 +19,7 @@ cache:
     - $HOME/.composer/cache/files
 
 before_install:
-    - mysql -u root -e 'CREATE DATABASE todolistproject;'
+    - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
 
 before_script:
     - composer install  
