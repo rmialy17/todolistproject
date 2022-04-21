@@ -28,15 +28,17 @@ before_install:
     - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
     # - mysql -u root -e "CREATE USER;"
     # - mysql -u root -e "GRANT ALL ON stockmarket.* TO 'makler'@'localhost';"
-    - mysql -e "travis.sql" todolistproject_test
-    - ./migrate
+    # - mysql -e "travis.sql" todolistproject_test
+    # - ./migrate
     # - mysql -u root < tests/travis.sql
 #   - mysql -e 'CREATE DATABASE symfony;
     # - mysql -e 'CREATE DATABASE IF NOT EXISTS test;
 
 before_script:
     #- composer self-update
-    - composer install
+    - composer install  
+    - php bin/console doctrine:schema:update
+    - php bin/console doctrine:fixtures:load
 env:
     # - KERNEL_CLASS='App\Kernel'
     # - APP_SECRET='$ecretf0rt3st'
@@ -45,8 +47,7 @@ env:
     # - PANTHER_ERROR_SCREENSHOT_DIR=./var/error-screenshots
     # - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
     # - mysql -e 'USE todolistproject_test; create table user'
-    # - php bin/console doctrine:schema:update --force
-    # - php bin/console doctrine:fixtures:load -n
+  
     # - phpenv config-rm xdebug.ini || true
     # - |
     #     if [[ "$BLACKFIRE" = "on" ]]; then
