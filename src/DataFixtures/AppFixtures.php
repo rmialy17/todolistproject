@@ -41,12 +41,12 @@ class AppFixtures extends Fixture
             $task->setContent($data["content"][$i]);
             $task->toggle($data["isDone"][$i]);
             // $task->setUser($faker->randomElement($users));
-            // if ($count < 2) {
+            if ($count < 2) {
                 $task->setUser($user);
-            // }
-            // if($user == null){
-            //     $user->setUsername('anonymous');
-            // }
+            }
+            if($user == null){
+                $user->setUsername('anonymous');
+            }
             $manager->persist($task);
             // $count++;
         }
