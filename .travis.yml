@@ -27,8 +27,8 @@ cache:
 before_script:
     #- composer self-update
     - composer install
-    # - php bin/console doctrine:schema:update --force
-    # - php bin/console doctrine:fixtures:load -n
+    - php bin/console doctrine:schema:update --force
+    - php bin/console doctrine:fixtures:load -n
     # - phpenv config-rm xdebug.ini || true
     # - |
     #     if [[ "$BLACKFIRE" = "on" ]]; then
@@ -38,4 +38,4 @@ before_script:
     #     fi
 
 script:
-    - vendor/bin/phpunit
+    - .vendor/bin/phpunit
