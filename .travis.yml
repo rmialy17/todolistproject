@@ -24,7 +24,7 @@ cache:
 # install:
 #     - travis_retry composer install
 before_install:
-    - mysql -u root -e 'CREATE DATABASE todolistproject_test;' < tests/travis.sql
+    - mysql -u root -e 'CREATE DATABASE todolistproject_test;' < scripts/travis.sql
     # - mysql -u root < tests/travis.sql
 #   - mysql -e 'CREATE DATABASE symfony;
     # - mysql -e 'CREATE DATABASE IF NOT EXISTS test;
