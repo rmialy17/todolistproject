@@ -2,9 +2,7 @@ language: php
 
 matrix:
     include:
-        - php: 7.3
         - php: 7.4
-        - php: 7.4.9
           env: BLACKFIRE=on
 
 sudo: false
@@ -25,6 +23,9 @@ install:
 
 before_script:
     - composer self-update
+    - composer install -n
+    - php bin/console doctrine:schema:update --force
+    - php bin/console doctrine:fixtures:load -n
     - phpenv config-rm xdebug.ini || true
     - |
         if [[ "$BLACKFIRE" = "on" ]]; then
