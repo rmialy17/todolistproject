@@ -9,7 +9,7 @@ services:
 
 test:
   adapter: mysql2
-  database: symfony
+  database: todolisproject
   username: travis
   encoding: utf8      
 
