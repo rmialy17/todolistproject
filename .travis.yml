@@ -20,6 +20,9 @@ cache:
 
 before_install:
     - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
+    - KERNEL_CLASS='App\Kernel'
+    - php bin/console doctrine:schema:update --force
+    - php bin/console doctrine:fixtures:load -n
 
 before_script:
     - composer install  
