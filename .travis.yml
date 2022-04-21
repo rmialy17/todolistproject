@@ -35,8 +35,8 @@ before_script:
     - PANTHER_APP_ENV=panther
     - PANTHER_ERROR_SCREENSHOT_DIR=./var/error-screenshots
     - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
-    - php bin/console doctrine:schema:update --force
-    - php bin/console doctrine:fixtures:load -n
+    # - php bin/console doctrine:schema:update --force
+    # - php bin/console doctrine:fixtures:load -n
     # - phpenv config-rm xdebug.ini || true
     # - |
     #     if [[ "$BLACKFIRE" = "on" ]]; then
