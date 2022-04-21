@@ -20,6 +20,7 @@ cache:
 
 before_install:
     - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
+    - mysql -u root -e 'create table todolistproject_test.user;'
     - KERNEL_CLASS='App\Kernel'
     - APP_SECRET='$ecretf0rt3st'
     - SYMFONY_DEPRECATIONS_HELPER=999999
