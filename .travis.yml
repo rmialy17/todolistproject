@@ -26,7 +26,7 @@ cache:
 before_install:
     # - mysql -u root -e 'CREATE DATABASE todolistproject_test;' < travis.sql
     - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
-    - mysql -e "travis.sql" travis-database
+    - mysql -e "travis.sql" todolistproject_test
     - ./migrate
     # - mysql -u root < tests/travis.sql
 #   - mysql -e 'CREATE DATABASE symfony;
