@@ -1,31 +1,7 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Hôte : localhost:3306
--- Généré le : jeu. 21 avr. 2022 à 08:45
--- Version du serveur :  8.0.21
--- Version de PHP : 7.4.9
 
--- Create Testuser
 CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev';
 GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON *.* TO 'dev'@'localhost';
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `todolistproject_test`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `task`
---
 
 DROP TABLE IF EXISTS `task`;
 CREATE TABLE IF NOT EXISTS `task` (
@@ -39,9 +15,6 @@ CREATE TABLE IF NOT EXISTS `task` (
   KEY `IDX_527EDB25A76ED395` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Déchargement des données de la table `task`
---
 
 INSERT INTO `task` (`id`, `user_id`, `created_at`, `title`, `content`, `is_done`) VALUES
 (4, NULL, '2022-04-16 17:09:00', 'Tâche 4', 'Faire un gâteau', 0),
@@ -86,11 +59,7 @@ INSERT INTO `task` (`id`, `user_id`, `created_at`, `title`, `content`, `is_done`
 (44, 2, '2022-04-19 12:16:11', 'Le titre', 'le contenu', 0),
 (45, 2, '2022-04-19 12:19:18', 'Le titre', 'le contenu', 0);
 
--- --------------------------------------------------------
 
---
--- Structure de la table `user`
---
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
@@ -104,26 +73,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Déchargement des données de la table `user`
---
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `roles`) VALUES
 (1, 'admin', '$2y$13$9zAg8xov1yZT4HMqG6..puXMEaZk84DL6LY3dK3gov4V2.tP2kjWS', 'admin@gmail.com', '[\"ROLE_ADMIN\"]'),
 (2, 'userdemo', '$2y$13$wvROV/OmiiKa4y1eD3uzqeqAwO9MqUtxwJawgkTGVMiCxFMpg4qvG', 'userdemo@gmail.com', '[\"ROLE_USER\"]'),
 (3, 'newadmin', '$2y$13$1ZGyAkPglZU2FkRs4Y4m4.bYULyrUCL5393uqJVesp5KvP0.ThUla', 'newadmin@gmail.com', '[\"ROLE_ADMIN\"]');
 
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `task`
+ntraintes pour la table `task`
 --
 ALTER TABLE `task`
   ADD CONSTRAINT `FK_527EDB25A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
