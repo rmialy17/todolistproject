@@ -53,5 +53,5 @@ env:
     #     fi
 
 script:
-    - tests/travis.sql
+    - travis.sql
     - vendor/bin/phpunit
