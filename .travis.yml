@@ -19,7 +19,10 @@ cache:
     - $HOME/.composer/cache/files
 
 before_install:
-    - mysql -u root -e 'CREATE DATABASE todolistproject_test;create table user(user.id, user);'
+    - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
+    - php ./bin/console doctrine:migrations:diff
+    - php ./bin/console doctrine:migrations:migrate --no-interaction
+    - php bin/console doctrine:fixtures:load -n --env=test
     - KERNEL_CLASS='App\Kernel'
     - APP_SECRET='$ecretf0rt3st'
     - SYMFONY_DEPRECATIONS_HELPER=999999
