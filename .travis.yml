@@ -31,7 +31,7 @@ before_install:
 
 before_script:
     #- composer self-update
-    # - composer install
+    - composer install
     # - KERNEL_CLASS='App\Kernel'
     # - APP_SECRET='$ecretf0rt3st'
     # - SYMFONY_DEPRECATIONS_HELPER=999999
