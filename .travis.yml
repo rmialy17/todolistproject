@@ -5,6 +5,9 @@ matrix:
         - php: 7.4
         #   env: BLACKFIRE=on
 
+services:
+  - mysql         
+
 sudo: false
 
 cache:
@@ -23,7 +26,7 @@ cache:
 
 before_script:
     - composer self-update
-    - composer install -n
+    - composer install
     # - php bin/console doctrine:schema:update --force
     # - php bin/console doctrine:fixtures:load -n
     # - phpenv config-rm xdebug.ini || true
