@@ -19,8 +19,8 @@ cache:
     - $HOME/.composer/cache/files
 
 before_install:
-    - mysql -u root -e 'CREATE DATABASE todolistproject_test; USE todololistproject_test; CREATE TABLE user (id int NOT NULL AUTO_INCREMENT,username varchar(25) NOT NULL,password varchar(64) NOT NULL,email varchar(60) NOT NULL,roles longtext NOT NULL,PRIMARY KEY (id),UNIQUE KEY UNIQ_8D93D649F85E0677 (username),UNIQUE KEY UNIQ_8D93D649E7927C74 (email));'
-    # - mysql -u root -e 'CREATE DATABASE todolistproject_test; 
+    - mysql -u root -e 'CREATE DATABASE todolistproject; USE todololistproject; CREATE TABLE user (id int NOT NULL AUTO_INCREMENT,username varchar(25) NOT NULL,password varchar(64) NOT NULL,email varchar(60) NOT NULL,roles longtext NOT NULL,PRIMARY KEY (id),UNIQUE KEY UNIQ_8D93D649F85E0677 (username),UNIQUE KEY UNIQ_8D93D649E7927C74 (email));'
+    - mysql -u root -e 'CREATE DATABASE todolistproject_test; 
     # - composer require symfony/runtime
     # - php ./bin/console doctrine:migrations:diff
     # - php ./bin/console doctrine:migrations:migrate --no-interaction
