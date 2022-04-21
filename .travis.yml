@@ -25,6 +25,7 @@ cache:
 #     - travis_retry composer install
 # before_install:
 #   - mysql -e 'CREATE DATABASE symfony;
+    - mysql -e 'CREATE DATABASE IF NOT EXISTS test;
 
 before_script:
     #- composer self-update
@@ -35,7 +36,7 @@ before_script:
     - PANTHER_APP_ENV=panther
     - PANTHER_ERROR_SCREENSHOT_DIR=./var/error-screenshots
     - mysql -u root -e 'CREATE DATABASE todolistproject_test;'
-    - mysql -e 'USE todolistproject_test; create table user'
+    # - mysql -e 'USE todolistproject_test; create table user'
     # - php bin/console doctrine:schema:update --force
     # - php bin/console doctrine:fixtures:load -n
     # - phpenv config-rm xdebug.ini || true
