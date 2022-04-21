@@ -11,6 +11,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class AppFixtures extends Fixture
 {
     private $passwordHasher;
+  
+
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
@@ -20,7 +22,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         //Tasks(5)
-        
+     
         $today = new \DateTime();
         $user= new User();
 
@@ -29,20 +31,24 @@ class AppFixtures extends Fixture
             "content" => ['Faire le ménage', 'Faire les courses', 'Sortir les poubelles',
             'Faire un gâteau', 'Acheter une table'],
             "isDone" => [true, false, true, false, true]
+            //  "user_id" => 
         ];
-
+        $count = 0;
         for ($i = 0; $i < count($data['title']); $i++) {
             $task = new Task();
             $task->setCreatedAt($today);
             $task->setTitle($data["title"][$i]);
             $task->setContent($data["content"][$i]);
             $task->toggle($data["isDone"][$i]);
-            $task->setUser(null);
-            if($user == null){
-                $user->setUsername('anonymous');
-            }
+            // $task->setUser($faker->randomElement($users));
+            // if ($count < 2) {
+                $task->setUser($user);
+            // }
+            // if($user == null){
+            //     $user->setUsername('anonymous');
+            // }
             $manager->persist($task);
-          
+            // $count++;
         }
 
         $manager->flush();
