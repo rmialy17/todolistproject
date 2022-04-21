@@ -1,7 +1,7 @@
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+-- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- START TRANSACTION;
+-- SET time_zone = "+00:00";
 
 
 
@@ -81,8 +81,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `roles`) VALUES
 (2, 'userdemo', '$2y$13$wvROV/OmiiKa4y1eD3uzqeqAwO9MqUtxwJawgkTGVMiCxFMpg4qvG', 'userdemo@gmail.com', '[\"ROLE_USER\"]'),
 (3, 'newadmin', '$2y$13$1ZGyAkPglZU2FkRs4Y4m4.bYULyrUCL5393uqJVesp5KvP0.ThUla', 'newadmin@gmail.com', '[\"ROLE_ADMIN\"]');
 
-ntraintes pour la table `task`
---
+
 ALTER TABLE `task`
   ADD CONSTRAINT `FK_527EDB25A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
