@@ -68,8 +68,9 @@ class AppFixtures extends Fixture
          
        
             // if ($count < 2) {
-                $task->setUser($users[random_int(0,2)]);   
-                $task->users->getUsername();
+                $task->setUser($users[random_int(0,2)]);  
+                $users[]=$user; 
+                $user->getUsername();
             // }
             // if($user == null){
             //     $user->setUsername('anonymous');
