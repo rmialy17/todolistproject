@@ -27,8 +27,8 @@ class AppFixtures extends Fixture
         $user= new User();
         $data2 = [
             "username" => ['admin','userdemo', 'anonymous'],
-            "email" => ['admin@gmail.com', 'userdemo@gmail.com'],
-            "roles" => [['ROLE_ADMIN'],['ROLE_USER']]
+            "email" => ['admin@gmail.com', 'userdemo@gmail.com', 'annonymous@gmail.com'],
+            "roles" => [['ROLE_ADMIN'],['ROLE_USER'],['ROLE_USER']]
         ];
 
         for ($i = 0; $i < count($data2['username']); $i++) {
