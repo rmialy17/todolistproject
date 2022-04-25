@@ -21,15 +21,16 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $users = [];
+        // $users = [];
 
         //Users(2)
         $user= new User();
         $data2 = [
-            "username" => ['admin','userdemo', 'anonymous'],
-            "email" => ['admin@gmail.com', 'userdemo@gmail.com', 'annonymous@gmail.com'],
-            "roles" => [['ROLE_ADMIN'],['ROLE_USER'],['ROLE_USER']]
-        ];
+            "username" => ['admin','userdemo'],
+            "email" => ['admin@gmail.com', 'userdemo@gmail.com', 'anonymous@gmail.com'],
+            "roles" => [['ROLE_ADMIN'], ['ROLE_USER']
+        ]
+    ];
 
         for ($i = 0; $i < count($data2['username']); $i++) {
             $user = new User();
@@ -41,8 +42,6 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         
         }
-
-
 
         $manager->flush();
 
@@ -56,7 +55,7 @@ class AppFixtures extends Fixture
             "content" => ['Faire le ménage', 'Faire les courses', 'Sortir les poubelles',
             'Faire un gâteau', 'Acheter une table'],
             "isDone" => [true, false, true, false, true]
-            //  "user_id" => 
+        
         ];
         // $count = 0;
         for ($i = 0; $i < count($data['title']); $i++) {
@@ -65,24 +64,18 @@ class AppFixtures extends Fixture
             $task->setTitle($data["title"][$i]);
             $task->setContent($data["content"][$i]);
             $task->toggle($data["isDone"][$i]);
-         
-       
-            // if ($count < 2) {
-                $task->setUser($users[random_int(0,2)]);  
-                $users[]=$user; 
-                $user->getUsername();
-            // }
-            // if($user == null){
-            //     $user->setUsername('anonymous');
-            // }
+           
+            // $task->setUser($users[random_int(0,2)]);  
+            // $users[]=$user; 
+    
+                $task->setUser(NULL);
+            
             $manager->persist($task);
           
         }
 
         $manager->flush();
 
-
-      
-
     }
 }
+

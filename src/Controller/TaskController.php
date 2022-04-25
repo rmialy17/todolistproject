@@ -9,7 +9,6 @@ use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -39,7 +38,7 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+      
             $user=$this->getUser();
             $task->setUser($user);
             $em->persist($task);
@@ -110,5 +109,16 @@ class TaskController extends AbstractController
 
         return $this->redirectToRoute('task_list');
     
+    }
+
+     /**
+     * @Route("/tasks/ended", name="task_list_ended")
+     */
+    public function listEndingAction(TaskRepository $repo): Response
+    {
+        return $this->render(
+            'task/list.html.twig',
+            ['tasks' => $repo->findBy(['isDone' => 1])]
+        );
     }
 }
