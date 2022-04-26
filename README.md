@@ -33,7 +33,7 @@ Pour voir si les tests fonctionnent :
 - Mettre à jour le schéma de la base de donnée de test : ```php bin/console doctrine:schema:update --env=test --force```
 - Charger les fixtures dans la base de donnée de test : ```php bin/console doctrine:fixtures:load --env=test```
 - Lancer les tests : ```php bin/phpunit``` ou ```./vendor/bin/phpunit```
-- Pour voir le test-coverage (dans le dossier public/test-coverage) : ```./vendor/bin/phpunit --coverage-html public/test-coverage```
+- Pour voir le test-coverage (dans le dossier web/test-coverage) : ```./vendor/bin/phpunit --coverage-html web/test-coverage```
 
 ### Profiling
 - Si vous souhaitez tester les performances de l'application, installez et utilisez Blackfire : https://blackfire.io/docs/up-and-running/installation
